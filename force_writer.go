@@ -42,7 +42,7 @@ func (w *ForceWriter) ProcessData(d data.JSON, outputChan chan data.JSON, killCh
 	if err != nil {
 		util.KillPipelineIfErr(fmt.Errorf("Unable to send to Salesforce: %s", err), killChan)
 	}
-	outputChan <- result
+	outputChan <- []byte(result)
 }
 
 func (w *ForceWriter) Finish(outputChan chan data.JSON, killChan chan error) {
